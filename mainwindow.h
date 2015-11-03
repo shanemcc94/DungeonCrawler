@@ -5,31 +5,35 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include "player.h"
-#include <QKeyEvent>
+#include "room.h"
 
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow :public QMainWindow{
-
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    Ui::MainWindow *ui;
-    Player * player1;
+    void goToNextRoom();
+    void keyPressEvent(QKeyEvent * event);
     QGraphicsScene * scene;
-
 private slots:
 
-    void on_pushButton_clicked();
-    void on_pushButton_4_clicked();
-    
 
 
+private:
+    Ui::MainWindow *ui;
 
+
+    Player * player1;
+
+
+    void CreateRoom(int R, int L, int T, int B);
 };
 
 #endif // MAINWINDOW_H
