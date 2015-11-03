@@ -20,6 +20,8 @@ public:
     void move(int newX, int newY);
     void setPlayerType(int NewPlayerType);
     int getPlayerType();   
+    int getxPos();
+    int getyPos();
 
 /*private:
     QPixmap playerUp;
