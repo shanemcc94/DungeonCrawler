@@ -12,8 +12,6 @@
 #include<QTimer>
 #include <QDebug>
 
-
-
 /* TODO: try clean up all scene declarations (maybe put into its own class/method)
 
          try clean up wall declaration(make room class to put everything)*/
@@ -33,25 +31,18 @@ MainWindow::MainWindow(QWidget *parent) :
     Enemy * enemy5 = new Enemy();
 
 
-    Wall * RightSide = new Wall();
-    RightSide->setSide(true);
-    Wall * LeftSide = new Wall();
-    LeftSide->setSide(false);
-    Wall * TopSide = new Wall();
-    TopSide->setEnd(true);
-    Wall * BottomSide = new Wall();
-    BottomSide->setEnd(false);
-
     scene->addItem(player1);
+
+      
+   
+
+
+    CreateRoom(1,3,5,7);
 
 
     scene->addItem(enemy3);
     scene->addItem(enemy4);
     scene->addItem(enemy5);
-    scene->addItem(RightSide);
-    scene->addItem(LeftSide);
-    scene->addItem(TopSide);
-    scene->addItem(BottomSide);
     ui->graphicsView->setScene(scene);
 
 
@@ -84,4 +75,31 @@ void MainWindow::on_pushButton_4_clicked()
 {
 
 }
+void MainWindow::goToNextRoom()
+{
+    int xpos =player1->getxPos();
+    int ypos =player1->getyPos();
+    if(ypos< 50 && xpos> -40 &&xpos< 40){
+        qDebug() << "go to next room";}
+}
 
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    goToNextRoom();
+}
+
+
+void MainWindow::CreateRoom(int R,int L, int T , int B)
+{
+
+    Wall * TWall = new Wall(R);
+    Wall * BWall = new Wall(L);
+    Wall * LWall = new Wall(T);
+    Wall * RWall = new Wall(B);
+
+
+    scene->addItem(TWall);
+    scene->addItem(BWall);
+    scene->addItem(LWall);
+    scene->addItem(RWall);
+}
