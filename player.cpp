@@ -105,4 +105,14 @@ void Player::move(int newX, int newY){//method adds a pixel distance to player
 
 
 
+int Player::getxPos()
+{
+    return this->pos().x();
+}
+
+int Player::getyPos()
+{
+    return this->pos().y();
+}
+
 
